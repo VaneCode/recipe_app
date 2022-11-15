@@ -110,6 +110,8 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.11.0)
+    faker (3.0.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
     globalid (1.0.0)
@@ -272,6 +274,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  faker
   ffi
   importmap-rails
   jbuilder

@@ -7,7 +7,9 @@ class InventoriesController < ApplicationController
   end
 
   # GET /inventories/1 or /inventories/1.json
-  def show; end
+  def show
+    
+  end
 
   # GET /inventories/new
   def new
@@ -19,7 +21,9 @@ class InventoriesController < ApplicationController
 
   # POST /inventories or /inventories.json
   def create
+    @user = current_user
     @inventory = Inventory.new(inventory_params)
+    @inventory.user = @user
 
     respond_to do |format|
       if @inventory.save

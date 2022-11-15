@@ -1,6 +1,43 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+<section>
+ <%= render 'recipe_details' %>
+</section>
+
+<section>
+<div>
+    <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe)%>
+</div>
+</section>
+
+<section>
+<div>
+<% if @recipe_foods.empty? %>
+<p>This recipe doesn't have ingredients yet.</p>
+<% else %>
+<table>
+<tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <th>Actions</th>
+</tr>
+<% @recipe_foods.each do |recipe_food|%>
+<tr>
+  <td><%= recipe_food.food.name %></td>
+  <td><%= recipe_food.quantity %></td>
+  <td>$<%= recipe_food.food.price * recipe_food.quantity %></td>
+  <td>
+    <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food)%>
+    <%= button_to "Delete", recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete %>
+  </td>
+</tr>
+<% end %>
+</table>
+<% end %>
+</div>
+</section>
+
 
 <div>
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |

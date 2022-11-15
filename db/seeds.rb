@@ -9,7 +9,6 @@
 #Users
 #5.times do 
     #User.create(name:Faker::Name)
-#end
 
 #Inventories
 5.times do
@@ -36,7 +35,8 @@ end
         food.measurement_unit = Faker::Lorem.word
         food.price = Faker::Number.between(from: 0.0, to: 1.0).round(2)
     end
-end
+end    
+
 #Invetory foods
 10.times do 
     InventoryFood.create do |inventory_food|

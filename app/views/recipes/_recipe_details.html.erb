@@ -1,0 +1,32 @@
+<div id="<%= dom_id @recipe %>">
+  <h1>
+    <%= @recipe.name %>
+  </h1>
+
+  <div>
+
+    <div>
+      <div>
+        <strong>Preparation time:</strong>
+        <%= @recipe.preparation_time.to_s(:time) %>
+      </div>
+
+      <div>
+        <strong>Cooking time:</strong>
+        <%= @recipe.cooking_time.to_s(:time) %>
+      </div>
+    </div>
+    
+    <div>
+      <div>
+        <input type="checkbox" role="switch" id="flexSwitchCheckDisabled" <%= 'checked' if @recipe.public %> disabled>
+        <label for="flexSwitchCheckDisabled">Public</label>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h4>Description:</h4>
+    <div><%= @recipe.description %><div>
+  </div>
+</div>

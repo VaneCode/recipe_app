@@ -3,12 +3,18 @@
 <h1>Recipes</h1>
 
 <div id="recipes">
+ <% if @recipes.empty? %>
+<div class="empty_div">
+  <h2>Recipes are coming soon!</h2>
+</div>
+<% else %>
   <% @recipes.each do |recipe| %>
     <%= render recipe %>
     <p>
       <%= link_to "Show this recipe", recipe %>
     </p>
   <% end %>
+<% end %>
 </div>
 
 <%= link_to "New recipe", new_recipe_path %>

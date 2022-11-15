@@ -1,27 +1,23 @@
 <div id="<%= dom_id recipe %>">
+  <div>
   <p>
     <strong>Name:</strong>
     <%= recipe.name %>
   </p>
-
-  <p>
-    <strong>Prep time:</strong>
-    <%= recipe.prep_time %>
-  </p>
-
-  <p>
-    <strong>Cooking time:</strong>
-    <%= recipe.cooking_time %>
-  </p>
-
+  <% if can? :destroy, recipe %>
+    <%= link_to 'Remove',
+      recipe_path(recipe), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    },
+      class: "btn btn-danger" %>    
+  <% end %>
+  </div>
+  <div>
   <p>
     <strong>Description:</strong>
     <%= recipe.description %>
   </p>
-
-  <p>
-    <strong>Public:</strong>
-    <%= recipe.public %>
-  </p>
-
 </div>
+</div>
+

@@ -4,16 +4,16 @@
   <section class="index-container">
    <div>
       <h2>List of Foods</h2>
-      <div>
+      <div class=" Add_button">
       <%= link_to 'Add Food', new_food_path %>
       </div>
       <br>
-      <table>
+      <table class="table_food">
         <thead>
           <tr>
             <th>Food</th>
-            <th>Price</th>
             <th>Measurement Unit</th>
+            <th>Price Unit</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -21,8 +21,8 @@
           <% @foods.each do |food| %>
             <tr>
                <td><%= food.name %></td>
-               <td><%= food.price %></td>
                <td><%= food.measurement_unit %></td>
+               <td><%= food.price %></td>
               <div>
                <td>
                 <%= link_to'Delete', food, :method => :delete %>

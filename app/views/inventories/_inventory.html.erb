@@ -1,7 +1,11 @@
 <div id="<%= dom_id inventory %>" class="inventory">
   <p>
     <strong>Name:</strong>
-    <%= inventory.name %>
+    <%= inventory.name %><br />
+     <strong>Description:</strong>
+    <%=inventory.description%>
+    <%= button_to "Remove", inventory, method: :delete %>
+
   </p>
 
 </div>

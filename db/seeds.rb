@@ -35,12 +35,12 @@ end
         food.measurement_unit = Faker::Lorem.word
         food.price = Faker::Number.between(from: 0.0, to: 1.0).round(2)
     end
-end    
+end     
 
 #Invetory foods
 10.times do 
     InventoryFood.create do |inventory_food|
-        inventory_food.quantity = rand(1..99)
+        inventory_food.quantity = Faker::Number.between(from: 1, to: 10)
         inventory_food.inventory = Inventory.all.sample
         inventory_food.food = Food.all.sample
     end
@@ -48,7 +48,7 @@ end
 #Recipes foods
 10.times do 
     RecipeFood.create do |recipe_food|
-        recipe_food.quantity = rand(1..99)
+        recipe_food.quantity = Faker::Number.between(from: 1, to: 10)
         recipe_food.recipe = Recipe.all.sample
         recipe_food.food = Food.all.sample
     end

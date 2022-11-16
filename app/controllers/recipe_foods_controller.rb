@@ -60,7 +60,9 @@ class RecipeFoodsController < ApplicationController
     @recipe_food.destroy
 
     respond_to do |format|
-      format.html { redirect_to recipe_url(@recipe_food.recipe), notice: 'The ingredient was successfully removed from the recipe.' }
+      format.html do
+        redirect_to recipe_url(@recipe_food.recipe), notice: 'The ingredient was successfully removed from the recipe.'
+      end
       format.json { head :no_content }
     end
   end

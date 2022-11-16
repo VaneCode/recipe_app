@@ -1,5 +1,6 @@
 class InventoryFoodsController < ApplicationController
   before_action :set_inventory_food, only: %i[show edit update destroy]
+  before_action :set_foods
 
   # GET /inventory_foods or /inventory_foods.json
   def index
@@ -64,6 +65,10 @@ class InventoryFoodsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_inventory_food
     @inventory_food = InventoryFood.find(params[:id])
+  end
+
+  def set_foods
+    @foods = Food.all
   end
 
   # Only allow a list of trusted parameters through.

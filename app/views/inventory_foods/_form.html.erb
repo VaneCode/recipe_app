@@ -11,10 +11,9 @@
     </div>
   <% end %>
 
-
   <div>
-    <%= form.label :quantity, style: "display: block" %>
-    <%= form.text_field :quantity %>
+    <%= form.label :food_id, style: "display: block", class: "form-label" %>
+    <%= form.select :food_id, @foods.map {|food| ["#{food.name} in #{food.measurement_unit}", food.id]}, {}, { class: '' } %>
   </div>
   
   <div>

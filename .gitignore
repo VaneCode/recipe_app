@@ -35,3 +35,6 @@
 
 #   ignore local IDE settings
 .vscode
+
+# .gitignore
+node_modules/

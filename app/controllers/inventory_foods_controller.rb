@@ -1,6 +1,7 @@
 class InventoryFoodsController < ApplicationController
   before_action :set_inventory_food, only: %i[show edit update destroy]
   before_action :set_foods
+  before_action :set_inventory
 
   # GET /inventory_foods or /inventory_foods.json
   def index
@@ -71,8 +72,12 @@ class InventoryFoodsController < ApplicationController
     @foods = Food.all
   end
 
+  def set_inventory
+    @inventory = Inventory.find(params[:inventory_id])
+  end
+
   # Only allow a list of trusted parameters through.
   def inventory_food_params
-    params.require(:inventory_food).permit(:quantity)
+    params.require(:inventory_food).permit(:quantity, :food_id)
   end
 end

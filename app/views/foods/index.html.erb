@@ -1,6 +1,3 @@
-<%# <!DOCTYPE!>
-<html>
- <body> %>
   <section class="index-container">
    <div>
       <h2>List of Foods</h2>
@@ -25,7 +22,7 @@
                <td><%= food.price %></td>
               <div>
                <td>
-                <%= link_to'Delete', food, :method => :delete %>
+                <% if can? :delete, food %><%= link_to'Delete', food, :method => :delete %><% end %>
                </td>
             </tr>
           </div>
@@ -34,5 +31,3 @@
       </table>
    </div>
   </section>
- <%# </body>
-</html> %>

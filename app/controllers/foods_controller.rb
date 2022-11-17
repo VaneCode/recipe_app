@@ -2,7 +2,7 @@ class FoodsController < ApplicationController
   before_action :set_food, only: %i[show destroy]
 
   def index
- 
+
     @foods = Food.all
   end
 
@@ -29,3 +29,14 @@ class FoodsController < ApplicationController
       end
     end
   end
+
+  private
+
+  def set_food
+    @food = Food.find(params[:id])
+  end
+
+  def food_params
+    params.require(:food).permit(:name, :measurement_unit, :price)
+  end
+end

@@ -18,7 +18,12 @@ class RecipeFoodsController < ApplicationController
   end
 
   # GET /recipe_foods/1/edit
-  def edit; end
+  def edit
+    @foods = Food.all
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    render :edit
+  end
 
   def add_food
     redirect_to new_food_path and return
@@ -43,9 +48,11 @@ class RecipeFoodsController < ApplicationController
 
   # PATCH/PUT /recipe_foods/1 or /recipe_foods/1.json
   def update
+    @recipe_food = RecipeFood.find(params[:id])
+    @recipe_food.recipe = @recipe
     respond_to do |format|
       if @recipe_food.update(recipe_food_params)
-        format.html { redirect_to recipe_food_url(@recipe_food), notice: 'Recipe food was successfully updated.' }
+        format.html { redirect_to recipe_url(@recipe_food.recipe), notice: 'The ingredient was successfully updated.' }
         format.json { render :show, status: :ok, location: @recipe_food }
       else
         format.html { render :edit, status: :unprocessable_entity }

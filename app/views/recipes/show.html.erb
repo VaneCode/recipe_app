@@ -6,12 +6,6 @@
 
 <section>
 <div>
-    <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe)%>
-</div>
-</section>
-
-<section>
-<div>
 <% if @recipe_foods.empty? %>
 <p>This recipe doesn't have ingredients yet.</p>
 <% else %>
@@ -30,11 +24,11 @@
 <% @recipe_foods.each do |recipe_food|%>
 <tr>
   <td><%= recipe_food.food.name %></td>
-  <td><%= recipe_food.quantity %></td>
+  <td><%= recipe_food.quantity recipe_food.food.measurement_unit%></td>
   <td>$<%= recipe_food.food.price * recipe_food.quantity %></td>
   <% if can? :manage, @recipe%>
        <td>
-    <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food), class: "btn btn-primary"%>
+    <%= link_to "Modify", recipe_edit_recipe_food_path(recipe_food.recipe, recipe_food), class: "btn btn-primary"%>
     <%= button_to "Delete", recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete, class: "btn btn-danger" %>
   </td>
   <% end %>
@@ -47,9 +41,9 @@
 </section>
 
 
-<div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
-
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+<div class="d-flex justify-content-center gap-3 container-lg mt-3 mb-3"> 
+  <%= link_to "Back to my recipes", recipes_path, class: "btn btn-primary" %> 
+   <% if can? :manage, @recipe%>
+  <%= button_to "Destroy this recipe", @recipe, method: :delete, class: "btn btn-danger" %>
+  <% end %>
 </div>

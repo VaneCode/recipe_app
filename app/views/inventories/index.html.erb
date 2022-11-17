@@ -1,16 +1,20 @@
 <p style="color: green"><%= notice %></p>
 
-
 <h1>Inventories</h1>
-<%= current_user.name %>
-<div id="inventories">
-  <% @inventories.each do |inventory| %>
-    <%= render inventory %>
-    <p>
-      <%= link_to "Show this inventory", inventory %>
-    </p>
-  <% end %>
+
+<section>
+  <div id="inventories" class="d-flex flex-column gap-3">
+    <% if @inventories.empty? %>
+      <div class="empty_div">
+        <h2>Ops, you don't have inventories!</h2>
+      </div>
+    <% else %>
+      <% @inventories.each do |inventory| %>
+        <%= render inventory %>
+      <% end %>
+    <% end %>
 </div>
-<%= link_to "New inventory", new_inventory_path %>
+</section>
+<%= link_to "New inventory", new_inventory_path, class: 'btn btn-primary' %>
 
  

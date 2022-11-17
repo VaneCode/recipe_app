@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+   <div class="container-fluid">
+    <%= link_to 'Culinary cloud', root_path, class: 'navbar-brand' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'My foods', foods_path, class: "nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'My recipes', recipes_path, class: "nav-link"%>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to 'Public Recipes', public_recipes_path, class: "nav-link"%>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+    <li class="nav-item <%= active_class(edit_user_registration_path) %>">
+      <%= link_to "Hi, #{current_user.name}", edit_user_registration_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item <%= active_class(destroy_user_session_path) %>">
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+    </li>
+  <% else %>
+    <li class="nav-item <%= active_class(new_user_session_path) %>">
+      <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item <%= active_class(new_user_registration_path) %>">
+      <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+    </li>
+  <% end %>
+        </ul>
+      </div>
+    </div>
+</nav>

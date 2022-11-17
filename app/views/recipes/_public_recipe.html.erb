@@ -1,0 +1,29 @@
+<div class="row border border-primary" id="<%= dom_id recipe %>">
+  <div class="col-sm-6">
+    <div class="card border-0">
+      <div class="card-body">
+        <h3 class="card-text"><%= link_to recipe.name, recipe %></h3>
+        <br>
+        <h4 class="card-text"><%= "By #{recipe.user.name}" %></h4>
+        <br>
+         <% if can? :destroy, recipe %>
+    <%= link_to 'Remove',
+      recipe_path(recipe), data: {
+                      turbo_method: :delete,
+                      turbo_confirm: "Are you sure?"
+                    }, class: "btn btn-danger" 
+     %>    
+  <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card border-0">
+      <div class="card-body">
+        <p class="card-text"><strong>Total food items:</strong> <%= recipe.recipe_foods.count %></p>
+        <p class="card-text"><strong>Total price:</strong> <%= number_to_currency(recipe.calc_price) %></p>
+      </div>
+    </div>
+  </div>
+</div>
+

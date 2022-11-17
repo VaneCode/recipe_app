@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Public recipes</h1>
+
+<section>
+<div id="recipes" class="d-flex flex-column gap-3">
+ <% if @recipes.empty? %>
+<div class="empty_div">
+  <h2>New recipes coming soon!</h2>
+</div>
+<% else %>
+  <% @recipes.each do |recipe| %>
+    <%= render 'public_recipe', recipe: %>
+  <% end %>
+<% end %>
+</div>
+</section>
+<%= link_to "New recipe", new_recipe_path, class: 'btn btn-primary' %>

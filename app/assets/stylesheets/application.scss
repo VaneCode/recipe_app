@@ -1,0 +1,64 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+@import "bootstrap";
+
+:root {
+  --azure: #0290ff;
+  --opaque-azure: #4386bf;
+  --dark-white: #e8e8e8;
+  --white-color: #fff;
+  --black-color: #121212;
+  --warm-grey: #888;
+  --very-light-pink: #c4c4c4;
+  --title-font: 'Ubuntu', sans-serif;
+  --text-font: 'IBM Plex Sans', sans-serif;
+  --user-font: 'IBM Plex Mono', monospace;
+}
+
+body {
+  box-sizing: border-box;
+  font-size: 100%;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--opaque-azure);
+}
+
+a:visited {
+  color: var(--azure);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+section {
+  width: 95%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}

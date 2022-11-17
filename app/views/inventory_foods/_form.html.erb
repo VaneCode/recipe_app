@@ -1,4 +1,4 @@
-<%= form_with(model: inventory_food) do |form| %>
+<%= form_with(model: inventory_food,  url: inventory_inventory_foods_path(inventory), method: :post) do |form| %>
   <% if inventory_food.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(inventory_food.errors.count, "error") %> prohibited this inventory_food from being saved:</h2>

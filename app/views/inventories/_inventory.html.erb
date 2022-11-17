@@ -4,7 +4,7 @@
     <%= inventory.name %><br />
      <strong>Description:</strong>
     <%=inventory.description%>
-    <%= button_to "Remove", inventory, method: :delete %>
+    <% if can? :delete, inventory %><%= button_to "Remove", inventory, method: :delete %><% end %>
   </p>
 
 </div>

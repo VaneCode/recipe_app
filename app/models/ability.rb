@@ -5,8 +5,7 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
 
-    # Unloged users can read all resources
-
+    # Unloged use rs can read all resources
     can :read, :all
 
     # Logged users can read all post and comments, and destroy their posts and comments
@@ -16,5 +15,8 @@ class Ability
     can :read, :all
     can :manage, Recipe, :user
     can :manage, Inventory, :user
+
+    # manage all posts if is owner
+    # can :manage, Inventory, user_id :user.id
   end
 end

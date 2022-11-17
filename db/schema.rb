@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_175027) do
     t.datetime "updated_at", null: false
     t.bigint "inventory_id", null: false
     t.bigint "food_id", null: false
-    t.integer "quantity"
+    t.integer "quantity", default: 0
     t.index ["food_id"], name: "index_inventory_foods_on_food_id"
     t.index ["inventory_id"], name: "index_inventory_foods_on_inventory_id"
   end
@@ -46,8 +46,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_16_175027) do
     t.datetime "updated_at", null: false
     t.bigint "food_id", null: false
     t.bigint "recipe_id", null: false
-    t.integer "quantity"
+    t.integer "quantity", default: 0
     t.index ["food_id"], name: "index_recipe_foods_on_food_id"
+    t.index ["recipe_id", "food_id"], name: "index_recipe_foods_on_recipe_id_and_food_id", unique: true
     t.index ["recipe_id"], name: "index_recipe_foods_on_recipe_id"
   end
 

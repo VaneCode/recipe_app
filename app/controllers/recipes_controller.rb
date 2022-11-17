@@ -1,13 +1,21 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_recipe, only: %i[show edit update destroy]
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.recipes
+  end
+
+  # GET public recipes
+  def public_recipes
+    @recipes = Recipe.includes(:user).order(created_at: :desc).select(&:public)
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @recipe_foods = @recipe.recipe_foods.includes(:food, :recipe)
+  end
 
   # GET /recipes/new
   def new
@@ -19,7 +27,9 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
+    @user = current_user
     @recipe = Recipe.new(recipe_params)
+    @recipe.user = @user
 
     respond_to do |format|
       if @recipe.save
@@ -64,6 +74,6 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:name, :prep_time, :cooking_time, :description, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end

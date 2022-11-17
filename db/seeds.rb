@@ -18,7 +18,11 @@ akora = Inventory.create(name:'Akora', description: 'Delicious staple foodfor th
 dekngor = Inventory.create(name:'Dek Ngor', description: 'Boiled Amur beans mixed with landi', user: wayungi)
 angara = Inventory.create(name:'Angara', description: 'Big fresh nile water fish, shinny and fatty, fried with its own fats', user: wayungi)
 
+luwombo = Inventory.create(name:'Luwombo', description: 'Chicken cooked in Ndagala', user: sali)
+shawama = Inventory.create(name:'Shawama', description: 'Conconction of chips + chicken & wheat', user: sali)
+lekuki = Inventory.create(name:'Lekuki', description: 'Wid lased kuki iten 1 pa de', user: sali)
 
+# ---------------------------------------------------------------------------
 oboo = Food.create(name: 'Oboo', measurement_unit: 'Bundle', price: 500)
 rec = Food.create(name: 'Rec', measurement_unit: 'Piece', price: 15000)
 odii = Food.create(name: 'Odii', measurement_unit: 'Kg', price: 10000)

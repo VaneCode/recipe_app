@@ -1,4 +1,7 @@
 class InventoriesController < ApplicationController
+  # automatically authorize all actions
+  load_and_authorize_resource
+  
   before_action :set_inventory, only: %i[show edit update destroy]
 
   # GET /inventories or /inventories.json

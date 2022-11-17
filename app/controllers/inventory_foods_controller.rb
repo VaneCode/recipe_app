@@ -27,7 +27,7 @@ class InventoryFoodsController < ApplicationController
     respond_to do |format|
       if @inventory_food.save
         format.html do
-          redirect_to  inventory_url(@inventory), notice: 'Inventory food was successfully created.'
+          redirect_to inventory_url(@inventory), notice: 'Inventory food was successfully created.'
         end
         format.json { render :show, status: :created, location: @inventory_food }
       else

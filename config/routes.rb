@@ -3,17 +3,16 @@ Rails.application.routes.draw do
 
   devise_for :users # Routes for authentication
  
-  root "foods#index"  # Defines the root path route ("/")
-  # resources :recipe_foods
-  resources :inventory_foods
-  resources :inventories
+  root to: "foods#index"  # Defines the root path route ("/")
+  resources :users
+  resources :foods
   resources :recipes do
     resources :recipe_foods
     get '/add_food/', to: 'recipe_foods#add_food'
     # get '/shopping_list', to: 'recipes#shopping_list'
   end
-  resources :foods
-  resources :users
+  resources :inventory_foods
+  resources :inventories
   get '/public_recipes', to: 'recipes#public_recipes'
-  
+  # get '/general_shopping_list', to: 'foods#shopping_list'
 end

@@ -28,7 +28,6 @@ class RecipeFoodsController < ApplicationController
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
     @recipe_food.recipe = @recipe
-
     respond_to do |format|
       if @recipe_food.save
         format.html do
@@ -85,5 +84,6 @@ class RecipeFoodsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def recipe_food_params
     params.require(:recipe_food).permit(:quantity, :food_id)
+    # params.require(:recipe_food).permit(:quantity, :recipe_id, :food_id)
   end
 end

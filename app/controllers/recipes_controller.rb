@@ -7,6 +7,11 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
+  # GET public recipes
+  def public_recipes
+    @recipes = Recipe.includes(:user).order(created_at: :desc).select(&:public)
+  end
+
   # GET /recipes/1 or /recipes/1.json
   def show
     @recipe_foods = @recipe.recipe_foods.includes(:food, :recipe)

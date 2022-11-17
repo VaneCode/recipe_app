@@ -1,50 +1,45 @@
 <p style="color: green"><%= notice %></p>
 
-<h1><%= @inventory.name %></h1> 
-<%# <%= link_to "Add", new_inventory_path %>
-<%# ! tem comment %>
-<%# <%= link_to "Add Food", new_inventory_food_path %>
-<%= link_to "Add Food", new_inventory_inventory_food_path(@inventory) %>
+<h1 class="text-center"><%= @inventory.name %></h1> 
 
+<div class="d-flex justify-content-between container-lg mt-3 mb-3">
+  <%= link_to "Add Food", new_inventory_inventory_food_path(@inventory), class: 'btn btn-success'  %>
+</div>
 
-
+<hr class="line" />
 
 <%# todo: this partial is useless, it may need to be changed %>
 <%# <%= render @inventory %>
-<table>
-  <tr>
-      <th>Food</th>
-      <th>Quantiy</th>
-      <th>Actions</th>
-  </tr>
-  <% @inventory_foods.each do |inventory_food| %>
-    <tr>
-      <td><%= inventory_food.food.name %></td>
-      <td><%= inventory_food.quantity %>
-          <%= inventory_food.food.measurement_unit %>
-      </td>
-      <td>
-      <%# ! temporary %>
-        <%# <%= button_to "Remove", inventory_food, method: :delete %>
-        <%= button_to "Remove", inventory_inventory_food_path(inventory_food.inventory, inventory_food), method: :delete %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<section>
+  <div>
+    <% if @inventory_foods.empty? %>
+        <p>This Inventory doesn't have foods yet.</p>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Quantiy</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-<table>
-  <tr>
-    <th>Food</th>
-    <th>Quantiy</th>
-    <th>Actions</th>
-  </tr>
-</table>
+        <tbody>
+          <% @inventory_foods.each do |inventory_food| %>
+            <tr>
+              <td><%= inventory_food.food.name %></td>
+              <td><%= inventory_food.quantity %><%= inventory_food.food.measurement_unit %></td>
+              <td><%= button_to "Remove", inventory_inventory_food_path(inventory_food.inventory, inventory_food), method: :delete,  class: "btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+ </section> 
 
-<div>
-  <%# <%= link_to "Edit this inventory", edit_inventory_path(@inventory) %> 
-  
-  <%= link_to "Back to inventories", inventories_path %>
-
-
-  <%# <%= button_to "Destroy this inventory", @inventory, method: :delete %>
+<div class="d-flex justify-content-center gap-3 container-lg mt-3 mb-3">  
+  <%= link_to "Back to inventories", inventories_path, class: "btn btn-primary" %>
 </div>
+
+

@@ -1,3 +1,4 @@
+<section>
 <%= form_with(model: inventory) do |form| %>
   <% if inventory.errors.any? %>
     <div style="color: red">
@@ -12,18 +13,19 @@
   <% end %>
 
 
-  <div>
+  <div class='mb-3'>
     <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name,  class: "form-control" %>
   </div>
 
-  <div>
+  <div class='mb-3'>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary mb-3' %>
   </div>
 <% end %>
+</section>

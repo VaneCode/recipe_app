@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   # GET public recipes
   def public_recipes
-    @recipes = Recipe.includes(:user).order(created_at: :desc).select(&:public)
+    @recipes = Recipe.order(created_at: :desc).select(&:public)
   end
 
   # GET /recipes/1 or /recipes/1.json

@@ -7,7 +7,7 @@ class GeneralShoppingListController < ApplicationController
 
   def missing_foods(recipe, inventory)
     shopping_list = []
-    recipe_foods = recipe.recipe_foods
+    recipe_foods = recipe.recipe_foods.includes(:food)
     if recipe_foods.length.positive?
       recipe_foods.each do |recipe_food|
         food = recipe_food.food

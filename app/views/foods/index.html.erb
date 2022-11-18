@@ -1,17 +1,18 @@
-  <section class="index-container">
+ <p style="color: green"><%= notice %></p>
+<section class="index-container">
    <div>
       <h2>List of Foods</h2>
-      <div class=" Add_button">
-      <%= link_to 'Add Food', new_food_path %>
+      <div id="recipes" class="d-flex flex-column gap-3 float-end">
+      <%= link_to 'Add Food', new_food_path, class: 'btn btn-lg btn-primary'%>
       </div>
-      <br>
-      <table class="table_food">
+      <br/><br/><br/>
+      <table class="table table-striped table-bordered table-hover">
         <thead>
           <tr>
             <th>Food</th>
             <th>Measurement Unit</th>
             <th>Price Unit</th>
-            <th>Action</th>
+        <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +23,7 @@
                <td><%= food.price %></td>
               <div>
                <td>
-                <% if can? :delete, food %><%= link_to'Delete', food, :method => :delete %><% end %>
+                <% if can? :delete, food %><%= link_to'Delete', food, :method => :delete, class: "btn btn-danger" %><% end %>
                </td>
             </tr>
           </div>

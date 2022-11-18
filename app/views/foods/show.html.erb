@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
 
 <%= render @food %>
 
-<div>
-  <%= link_to "Edit this food", edit_food_path(@food) %> |
-  <%= link_to "Back to foods", foods_path %>
+<div class="d-flex justify-content-center gap-3 container-lg mt-3 mb-3">
 
-  <%= button_to "Destroy this food", @food, method: :delete %>
+  <%= link_to "Back to foods", new_food_path, class: "btn btn-secondary" %>
+
+  <%= button_to "Confirm to delete", @food, method: :delete, class: "btn btn-danger"%>
 </div>

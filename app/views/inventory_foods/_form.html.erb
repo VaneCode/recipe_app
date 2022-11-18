@@ -1,27 +1,31 @@
-<%= form_with(model: inventory_food,  url: inventory_inventory_foods_path(inventory), method: :post) do |form| %>
-  <% if inventory_food.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(inventory_food.errors.count, "error") %> prohibited this inventory_food from being saved:</h2>
+<section>
+  <%= form_with(model: inventory_food,  url: inventory_inventory_foods_path(inventory), method: :post) do |form| %>
+    <% if inventory_food.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(inventory_food.errors.count, "error") %> prohibited this inventory_food from being saved:</h2>
 
-      <ul>
-        <% inventory_food.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% inventory_food.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    
+
+    <div>
+      <%= form.label :food_id, style: "display: block", class: "form-label" %>
+      <%= form.select :food_id, @foods.map {|food| ["#{food.name} in #{food.measurement_unit}", food.id]}, {}, { class: "form-select form-select-lg mb-3" } %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :quantity, class:"form-label"%>
+      <%= form.text_field :quantity, class: "form-control"%>
+    </div>
+
+    <div>
+      <%= form.submit class: 'btn btn-primary'%>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :food_id, style: "display: block", class: "form-label" %>
-    <%= form.select :food_id, @foods.map {|food| ["#{food.name} in #{food.measurement_unit}", food.id]}, {}, { class: '' } %>
-  </div>
-  
-  <div>
-    <%= form.label :quantity, style: "display: block" %>
-    <%= form.text_field :quantity %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+  </section>

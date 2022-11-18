@@ -1,0 +1,9 @@
+<%= form_with(model: @recipe) do |form| %>
+  <div class="mb-3">
+    <%= form.label :inventory_id, style: "display: block", class: "form-label" %>
+    <%= form.select :inventory_id, @inventories.map {|inventory| ["#{inventory.name}", inventory.id]}, {}, { class: 'form-select form-select-lg' } %>
+ </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

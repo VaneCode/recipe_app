@@ -17,9 +17,40 @@ class RecipesController < ApplicationController
     @recipe_foods = @recipe.recipe_foods.includes(:food, :recipe)
   end
 
+
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+  end
+
+  def new_shopping_list
+    @recipe = @recipe
+    @inventories = Inventory.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def create_shopping_list
+    #recipe_foods = @recipe.recipe_foods
+    #inventories_foods = Inventory.find(params[:inventory_id]).inventory_foods
+    #@shopping_list = []
+    #unless @recipe_foods.empty? do
+     # @recipe_foods.each do |recipe_food|
+       # food = recipe_food.food
+        #inventory_food = inventories_foods.find(|item| item.food_id = food.id)
+        #unless inventory_food
+         # shopping_list << [food.name, "#{recipe_food.quantity} #{food.measurement_unit}",
+          #  recipe_food.quantity * food.price]
+        #else
+         # quantity_needed = recipe_food.quantity - inventory_food.quantity
+      #quantity_needed = 0 if quantity_needed.negative?
+      #if quantity_needed != 0
+       # @shopping_list << [food.name, "#{quantity_needed} #{food.measurement_unit}", quantity_needed * food.price]
+      #end
+       # end
+    #end
   end
 
   # GET /recipes/1/edit

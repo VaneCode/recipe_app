@@ -5,6 +5,22 @@
 </section>
 
 <section>
+  <div class="d-flex justify-content-between container-lg mt-3 mb-3">
+   <button type="button" class="btn btn-primary">
+        Generate shopping list
+   </button>
+  <% if can? :manage, @recipe%>
+    <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-success' %>
+  <% end %>
+  </div>
+
+<hr class="line" />
+</section>
+ <%= link_to new_shopping_list_path, data: { turbo_frame: "modal" }, class: "..." do %>
+    Edit profile
+  <% end %>
+<%= turbo_frame_tag :cookie_consent, src: new_shopping_list_path%>
+<section>
 <div>
 <% if @recipe_foods.empty? %>
 <p>This recipe doesn't have ingredients yet.</p>
@@ -12,24 +28,24 @@
 <table class="table">
 <thead>
 <tr>
-        <th>Food</th>
-        <th>Quantity</th>
-        <th>Value</th>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Value</th>
 <% if can? :manage, @recipe%>
-        <th colspan="2">Actions</th>
+        <th scope="col">Actions</th>
 <% end %>
 </tr>
 </thead>
 <tbody>
 <% @recipe_foods.each do |recipe_food|%>
-<tr>
+<tr scope="row">
   <td><%= recipe_food.food.name %></td>
-  <td><%= recipe_food.quantity recipe_food.food.measurement_unit %></td>
+  <td><%= recipe_food.quantity%></td>
   <td>$<%= recipe_food.food.price * recipe_food.quantity %></td>
   <% if can? :manage, @recipe%>
        <td>
-    <%= link_to "Modify", recipe_edit_recipe_food_path(recipe_food.recipe, recipe_food), class: "btn btn-primary"%>
-    <%= button_to "Delete", recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete, class: "btn btn-danger" %>
+    <%= link_to "Modify", recipe_edit_recipe_food_path(recipe_food.recipe, recipe_food)%>
+    <%= button_to "Delete", recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete%>
   </td>
   <% end %>
 </tr>

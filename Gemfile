@@ -54,6 +54,9 @@ gem 'dotenv-rails'
 # Use for restricting what resources a given user is allowed to access
 gem 'cancancan'
 
+# Use jquery
+gem "jquery-rails"
+
 # Bootstrap
 gem 'bootstrap'
 

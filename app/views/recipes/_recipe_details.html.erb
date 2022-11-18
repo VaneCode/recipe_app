@@ -29,13 +29,4 @@
     <h4>Steps:</h4>
     <div><%= @recipe.description %><div>
   </div>
-
-
-  <div class="d-flex justify-content-between container-lg mt-3 mb-3">
-  <% if can? :manage, @recipe%>
-    <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-success' %>
-  <% end %>
-  </div>
-
-<hr class="line" />
 </div>

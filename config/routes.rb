@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :inventory_foods
   end
   get '/public_recipes', to: 'recipes#public_recipes'
+  get '/new_shopping_list/', to: 'recipes#new_shopping_list', as: 'new_shopping_list'
 
   # get '/general_shopping_list', to: 'foods#shopping_list'
 end

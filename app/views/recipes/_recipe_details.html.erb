@@ -60,16 +60,24 @@ box-sizing: border-box;
   margin:25vh auto;
   background-color:white;
   border-radius:10px;">
-
-  <header>
-    <button id="close">&times;</button>
-  <header>
-
-  <section>
-  </section>
-
-  <footer>
-  </footer>
-  
+   <div class="modal-header">
+   <button id="close" class="close">&times;</button>
+   </div>
+ <div class="modal-body">
+ <h5 class="modal-title">Choose an inventory to use</h5>
+         <%=form_with url: general_shopping_list_index_path, method: :get do |f| %>
+      <div >
+        <div>
+          <%= f.select :inventory_id, Inventory.all.collect { |inventory| [inventory.name, inventory.id] }, :prompt => 'Select an Inventory', class: 'focus:outline-none', required: true %>
+        </div>
+        <%= f.hidden_field :recipe_id, value: @recipe.id, required: true %>
+      </div>
+      <div>
+        <%= f.submit "Generate",class:"btn btn-primary text-black"  %>
+      </div> 
+    <% end %>
+      </div>
+    </div>
+  </div>
   </div>
 </div>

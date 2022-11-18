@@ -32,10 +32,37 @@
 
 
   <div class="d-flex justify-content-between container-lg mt-3 mb-3">
+
+  <button id="modal_btn">Generate shopping list</button>
   <% if can? :manage, @recipe%>
     <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-success' %>
   <% end %>
   </div>
 
 <hr class="line" />
+</div>
+
+<div id="modal_content" class="d-none" 
+style="width:100vw; 
+z-index:2;
+margin:0;
+padding:0;
+height:100vh; 
+background-color:rgba(150,150,150, 0.7); 
+position:absolute;
+top:0;
+left:0;
+box-sizing: border-box;
+">
+  
+  <div style="max-width:70vw; 
+  min-height:50vh;
+  margin:25vh auto;
+  background-color:white;
+  border-radius:10px;">
+
+  <header>
+    <button id="close">&times;</button>
+  <header>
+  </div>
 </div>

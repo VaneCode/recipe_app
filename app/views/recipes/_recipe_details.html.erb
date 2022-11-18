@@ -66,7 +66,7 @@ box-sizing: border-box;
  <div class="modal-body">
  <h5 class="modal-title">Choose an inventory to use</h5>
          <%=form_with url: general_shopping_list_index_path, method: :get do |f| %>
-      <div >
+      <div>
         <div>
           <%= f.select :inventory_id, Inventory.all.collect { |inventory| [inventory.name, inventory.id] }, :prompt => 'Select an Inventory', class: 'focus:outline-none', required: true %>
         </div>

@@ -1,0 +1,33 @@
+<section>
+<div>
+<h2 class="text-center text-3xl font-semibold">Shopping List</h2>
+  <div class="flex my-4">
+      <div class="w-1/2">
+        <p class="my-2"><span class="text-gray-500 font-semibold">Amount of food to buy:</span> <span class="font-semibold text-lg"><%= @shopping_list.length %></span></p>
+        <p><span class="text-gray-500 font-semibold">Total value of food needed:</span> <span class="font-semibold text-lg">$<%= @shopping_list.inject(0) { |sum,item| sum + item[2] } %></span></p>
+      </div>
+      <div class="w-1/2">
+          <p class="my-2"><span class="text-gray-500 font-semibold">Recipe:</span> <a href="<%= "/recipes/#{@recipe.id}" %>" class="font-semibold text-lg"><%= @recipe.name %></a></p>
+          <p><span class="text-gray-500 font-semibold">Inventory:</span> <a href="<%= "/inventories/#{@inventory.id}" %>" class="font-semibold text-lg"><%= @inventory.name %></a></p>
+      </div>
+    </div>
+<table class="table">
+<thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @shopping_list.each do |shopping_item| %>
+            <tr>
+              <td><%= shopping_item[0] %></td>
+              <td><%= shopping_item[1] %></td>
+              <td><%= "$#{shopping_item[2]}" %></td>
+            </tr>
+          <% end %>
+</tbody>
+</table>
+</div> 
+</section>

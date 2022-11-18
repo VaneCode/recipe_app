@@ -29,7 +29,7 @@
               <% if can? :manage, @recipe%>
                 <td>
                   <%= link_to "Modify", recipe_edit_recipe_food_path(recipe_food.recipe, recipe_food), class: "btn btn-primary"%>
-                  <%= button_to "Delete", recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete, class: "btn btn-danger" %>
+                  <%= button_to "Delete", recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete, class: "btn btn-danger" id="no-blue"%>
                 </td>
               <% end %>
             </tr>

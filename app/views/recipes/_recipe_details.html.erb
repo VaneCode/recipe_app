@@ -1,0 +1,32 @@
+<div id="<%= dom_id @recipe %>" class="d-flex flex-column gap-3">
+  <h1 class="text-center text-primary">
+    <%= @recipe.name %>
+  </h1>
+
+  <div class="container-lg row">
+
+    <div class="col">
+      <div>
+        <strong>Preparation time:</strong>
+        <%= @recipe.preparation_time.to_s(:time) %>
+      </div>
+
+      <div>
+        <strong>Cooking time:</strong>
+        <%= @recipe.cooking_time.to_s(:time) %>
+      </div>
+    </div>
+    
+    <div class="col d-flex justify-content-end">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" <%= 'checked' if @recipe.public %> disabled>
+        <label class="form-check-label" for="flexSwitchCheckDisabled">Public</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-lg row">
+    <h4>Steps:</h4>
+    <div><%= @recipe.description %><div>
+  </div>
+</div>

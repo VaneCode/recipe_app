@@ -1,0 +1,7 @@
+<div class="divTableCell"><%= recipe_food.food.name %></div>
+<div class="divTableCell"><%= recipe_food.quantity %></div>
+<div class="divTableCell">$<%= recipe_food.food.price * recipe_food.quantity %></div>
+<div class="divTableCell">
+  <%= link_to 'Modify', edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food), remote: true %>
+  <%= link_to 'Delete', recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>

@@ -1,0 +1,12 @@
+<div class="row border border-primary" id="<%= dom_id inventory %>">
+  <div class="col-sm-3">
+    <div class="card border-0">
+      <div class="card-body">
+        <h4 class="card-text">
+        <%= link_to  inventory.name, inventory %></h4><br />
+        <%=inventory.description%><br />
+        <% if can? :delete, inventory %><%= button_to "Remove", inventory, method: :delete, class: "btn btn-danger" %><% end %>
+      </div>
+    </div>
+  </div>
+</div>

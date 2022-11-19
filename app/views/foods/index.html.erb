@@ -1,0 +1,34 @@
+ <p style="color: green"><%= notice %></p>
+<section class="index-container">
+   <div>
+      <h2>List of Foods</h2>
+      <div id="recipes" class="d-flex flex-column gap-3 float-end">
+      <%= link_to 'Add Food', new_food_path, class: 'btn btn-lg btn-primary'%>
+      </div>
+      <br/><br/><br/>
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Measurement Unit</th>
+            <th>Price Unit</th>
+        <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @foods.each do |food| %>
+            <tr>
+               <td><%= food.name %></td>
+               <td><%= food.measurement_unit %></td>
+               <td><%= food.price %></td>
+              <div>
+               <td>
+                <% if can? :delete, food %><%= link_to'Delete', food, :method => :delete, class: "btn btn-danger" %><% end %>
+               </td>
+            </tr>
+          </div>
+          <% end %>
+        </tbody>
+      </table>
+   </div>
+  </section>

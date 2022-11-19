@@ -1,0 +1,9 @@
+
+<%= render @food %>
+
+<div class="d-flex justify-content-center gap-3 container-lg mt-3 mb-3">
+
+  <%= link_to "Back to foods", new_food_path, class: "btn btn-secondary" %>
+
+  <%= button_to "Confirm to delete", @food, method: :delete, class: "btn btn-danger"%>
+</div>

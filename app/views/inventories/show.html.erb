@@ -1,0 +1,45 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="text-center"><%= @inventory.name %></h1> 
+
+<div class="d-flex justify-content-between container-lg mt-3 mb-3">
+  <%= link_to "Add Food", new_inventory_inventory_food_path(@inventory), class: 'btn btn-success'  %>
+</div>
+
+<hr class="line" />
+
+<%# todo: this partial is useless, it may need to be changed %>
+<%# <%= render @inventory %>
+<section>
+  <div>
+    <% if @inventory_foods.empty? %>
+        <p>This Inventory doesn't have foods yet.</p>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Food</th>
+            <th>Quantiy</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @inventory_foods.each do |inventory_food| %>
+            <tr>
+              <td><%= inventory_food.food.name %></td>
+              <td><%= inventory_food.quantity %><%= inventory_food.food.measurement_unit %></td>
+              <td><%= button_to "Remove", inventory_inventory_food_path(inventory_food.inventory, inventory_food), method: :delete,  class: "btn btn-danger" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+ </section> 
+
+<div class="d-flex justify-content-center gap-3 container-lg mt-3 mb-3">  
+  <%= link_to "Back to inventories", inventories_path, class: "btn btn-primary" %>
+</div>
+
+

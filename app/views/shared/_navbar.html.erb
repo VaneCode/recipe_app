@@ -29,6 +29,8 @@
     </li>
     <li class="nav-item <%= active_class(destroy_user_session_path) %>">
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'nav-link' %>
+
     </li>
   <% else %>
     <li class="nav-item <%= active_class(new_user_session_path) %>">

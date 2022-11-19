@@ -5,6 +5,15 @@
 </section>
 
 <section>
+  <div class="d-flex justify-content-between container-lg mt-3 mb-3">
+  <button id="modal_btn">Generate shopping list</button>
+  <% if can? :manage, @recipe%>
+    <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-success' %>
+  <% end %>
+  </div>
+</section>
+
+<section>
   <div>
       <% if @recipe_foods.empty? %>
         <p>This recipe doesn't have ingredients yet.</p>
@@ -40,10 +49,49 @@
   </div>
 </section>
 
-
 <div class="d-flex justify-content-center gap-3 container-lg mt-3 mb-3"> 
   <%= link_to "Back to my recipes", recipes_path, class: "btn btn-primary" %> 
    <% if can? :manage, @recipe%>
   <%= button_to "Destroy this recipe", @recipe, method: :delete, class: "btn btn-danger" %>
   <% end %>
+</div>
+
+<div id="modal_content" class="d-none" 
+style="width:100vw; 
+z-index:2;
+margin:0;
+padding:0;
+height:100vh; 
+background-color:rgba(150,150,150, 0.7); 
+position:absolute;
+top:0;
+left:0;
+box-sizing: border-box;
+">
+  
+  <div style="max-width:70vw; 
+  min-height:50vh;
+  margin:25vh auto;
+  background-color:white;
+  border-radius:10px;">
+   <div class="modal-header">
+   <button id="close" class="close">&times;</button>
+   </div>
+ <div class="modal-body">
+ <h5 class="modal-title">Choose an inventory to use</h5>
+         <%=form_with url: general_shopping_list_index_path, method: :get do |f| %>
+      <div>
+        <div>
+          <%= f.select :inventory_id, Inventory.all.collect { |inventory| [inventory.name, inventory.id] }, :prompt => 'Select an Inventory', class: 'focus:outline-none', required: true %>
+        </div>
+        <%= f.hidden_field :recipe_id, value: @recipe.id, required: true %>
+      </div>
+      <div>
+        <%= f.submit "Generate",class:"btn btn-primary text-black"  %>
+      </div> 
+    <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>

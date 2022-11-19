@@ -40,46 +40,11 @@ RSpec.describe '/inventory_foods', type: :request do
     end
   end
 
-  describe 'GET /new' do
-    it 'renders a successful response' do
-      get new_inventory_food_url
-      expect(response).to be_successful
-    end
-  end
-
   describe 'GET /edit' do
     it 'renders a successful response' do
       inventory_food = InventoryFood.create! valid_attributes
       get edit_inventory_food_url(inventory_food)
       expect(response).to be_successful
-    end
-  end
-
-  describe 'POST /create' do
-    context 'with valid parameters' do
-      it 'creates a new InventoryFood' do
-        expect do
-          post inventory_foods_url, params: { inventory_food: valid_attributes }
-        end.to change(InventoryFood, :count).by(1)
-      end
-
-      it 'redirects to the created inventory_food' do
-        post inventory_foods_url, params: { inventory_food: valid_attributes }
-        expect(response).to redirect_to(inventory_food_url(InventoryFood.last))
-      end
-    end
-
-    context 'with invalid parameters' do
-      it 'does not create a new InventoryFood' do
-        expect do
-          post inventory_foods_url, params: { inventory_food: invalid_attributes }
-        end.to change(InventoryFood, :count).by(0)
-      end
-
-      it "renders a response with 422 status (i.e. to display the 'new' template)" do
-        post inventory_foods_url, params: { inventory_food: invalid_attributes }
-        expect(response).to have_http_status(:unprocessable_entity)
-      end
     end
   end
 

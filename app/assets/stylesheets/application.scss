@@ -15,7 +15,7 @@
 @import "bootstrap";
 
 :root {
-  --azure: rgb(232, 203, 18);
+  --azure: #0290ff;
   --opaque-azure: #4386bf;
   --dark-white: #e8e8e8;
   --white-color: #fff;
@@ -38,10 +38,14 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--opaque-azure);
+  color: var(--black-color);
 }
 
 a:visited {
+  color: var(--black-color);
+}
+
+.a-primary {
   color: var(--azure);
 }
 

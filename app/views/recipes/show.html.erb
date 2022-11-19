@@ -6,7 +6,7 @@
 
 <section>
   <div class="d-flex justify-content-between container-lg mt-3 mb-3">
-  <button id="modal_btn">Generate shopping list</button>
+  <button id="modal_btn" class="btn btn-primary">Generate shopping list</button>
   <% if can? :manage, @recipe%>
     <%= link_to 'Add ingredient', new_recipe_recipe_food_path(@recipe), class: 'btn btn-success' %>
   <% end %>

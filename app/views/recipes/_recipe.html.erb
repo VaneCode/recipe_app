@@ -2,7 +2,7 @@
   <div class="col-sm-3">
     <div class="card border-0">
         <div class="card-body">
-          <h4 class="card-text"><%= link_to recipe.name, recipe %></h4>
+          <h4 class="card-text"><%= link_to recipe.name, recipe, class: "a-primary" %></h4>
           <br>
           <% if can? :destroy, recipe %>
           <%= link_to 'Remove',

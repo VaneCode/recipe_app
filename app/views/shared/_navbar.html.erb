@@ -28,7 +28,7 @@
       <%= link_to "Hi, #{current_user.name}", edit_user_registration_path, class: 'nav-link' %>
     </li>
     <li class="nav-item <%= active_class(destroy_user_session_path) %>">
-      <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'nav-link' %>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'btn btn-warning ' %>
     </li>
   <% else %>
     <li class="nav-item <%= active_class(new_user_session_path) %>">

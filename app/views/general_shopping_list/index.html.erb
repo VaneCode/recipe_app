@@ -2,7 +2,7 @@
 <div>
 <h2 class="text-center text-3xl font-semibold">Shopping List</h2>
   
-  <div class="d-flex flex-row ">
+  <div class="d-flex flex-row gap-3 justify-content-center">
       <div class="w-1/2">
         <p class="my-2"><span class="text-gray-500 font-semibold">Amount of food to buy:</span> <span class="font-semibold text-lg"><%= @shopping_list.length %></span></p>
         <p><span class="text-gray-500 font-semibold">Total value of food needed:</span> <span class="font-semibold text-lg">$<%= @shopping_list.inject(0) { |sum,item| sum + item[2] } %></span></p>
@@ -12,6 +12,8 @@
           <p><span class="text-gray-500 font-semibold">Inventory:</span> <a href="<%= "/inventories/#{@inventory.id}" %>" class="font-semibold text-lg"><%= @inventory.name %></a></p>
       </div>
     </div>
+    <br>
+    <br>
 <table class="table">
 <thead>
     <tr>
